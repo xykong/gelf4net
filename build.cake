@@ -61,7 +61,7 @@ string updateAssemblyFile(string packageName, bool upload)
     return newVersion;
 }
 
-void uploadGelf4net(bool upload = true)
+void uploadGelf4Net(bool upload = true)
 {
     var packageName = appName;
     var newVersion = updateAssemblyFile(packageName, upload);
@@ -90,7 +90,7 @@ void uploadGelf4net(bool upload = true)
     PushPackage(packageName, newVersion);
 }
 
-void uploadGelf4netAmqpAppender(bool upload = true)
+void uploadGelf4NetAmqpAppender(bool upload = true)
 {
     var packageName = $"{appName}.AmqpAppender";
 
@@ -131,7 +131,7 @@ void uploadGelf4netAmqpAppender(bool upload = true)
 }
 
 
-void uploadGelf4netHttpAppender(bool upload = true)
+void uploadGelf4NetHttpAppender(bool upload = true)
 {
     var packageName = $"{appName}.HttpAppender";
 
@@ -169,7 +169,7 @@ void uploadGelf4netHttpAppender(bool upload = true)
     PushPackage(packageName, newVersion);
 }
 
-void uploadGelf4netUdpAppender(bool upload = true)
+void uploadGelf4NetUdpAppender(bool upload = true)
 {
     var packageName = $"{appName}.UdpAppender";
 
@@ -265,10 +265,10 @@ Task("BuildPackage")
     .IsDependentOn("Run-Unit-Tests")
     .Does(() =>
 {
-    uploadGelf4net(false);
-    uploadGelf4netAmqpAppender(false);
-    uploadGelf4netHttpAppender(false);
-    uploadGelf4netUdpAppender(false);
+    uploadGelf4Net(false);
+    uploadGelf4NetAmqpAppender(false);
+    uploadGelf4NetHttpAppender(false);
+    uploadGelf4NetUdpAppender(false);
 
 });
 
@@ -278,10 +278,10 @@ Task("PushToNuget")
     .IsDependentOn("Run-Unit-Tests")
     .Does(() =>
 {
-    uploadGelf4net();
-    uploadGelf4netAmqpAppender();
-    uploadGelf4netHttpAppender();
-    uploadGelf4netUdpAppender();
+    uploadGelf4Net();
+    uploadGelf4NetAmqpAppender();
+    uploadGelf4NetHttpAppender();
+    uploadGelf4NetUdpAppender();
 
 });
 

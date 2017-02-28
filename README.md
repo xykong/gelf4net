@@ -215,9 +215,9 @@ Gelf4Net gives you the ability to log messages either through Udp, Amqp or Http.
 
 ```
 <log4net>
-    <appender name="GelfHttpAppender" type="Gelf4net.Appender.GelfHttpAppender, Gelf4Net.HttpAppender">
+    <appender name="GelfHttpAppender" type="Gelf4Net.Appender.GelfHttpAppender, Gelf4Net.HttpAppender">
         <url value="http://192.168.44.10:12201/gelf" />
-        <layout type="Gelf4net.Layout.GelfLayout, Gelf4Net.HttpAppender">
+        <layout type="Gelf4Net.Layout.GelfLayout, Gelf4Net.HttpAppender">
             <param name="AdditionalFields" value="app:GelfHttpAppender,version:1.0,Environment:Dev,Level:%level" />
             <param name="Facility" value="RandomPhrases" />
             <param name="IncludeLocationInformation" value="true" />
@@ -331,7 +331,7 @@ Any static information can be set through configuration by adding a comma separa
 You can also use conversion patterns like you would if you were using the [PatternLayout class][3]:
 
 ```
-<layout type="Gelf4net.Layout.GelfLayout, Gelf4net">
+<layout type="Gelf4Net.Layout.GelfLayout, Gelf4Net">
     <param name="AdditionalFields" value="app:RandomSentence,version:1.0,Level:%level" />
 </layout>
 ```
@@ -350,7 +350,7 @@ This will add the following fields to your GELF log:
 
 You can also use your own custom field and key/value separators to deal with the case when the additional fields contain commas or colons
 ```
-<layout type="Gelf4net.Layout.GelfLayout, Gelf4net">
+<layout type="Gelf4Net.Layout.GelfLayout, Gelf4Net">
     <param name="AdditionalFields" value="app¬:¬RandomSentence¬|¬version:1.0¬|¬Level¬:¬%level" />
     <param name="FieldSeparator" value="¬|¬" />
     <param name="KeyValueSeparator" value="¬:¬" />
@@ -438,7 +438,7 @@ If you want to format your message using a conversion pattern you can do so by s
 Again you can specify all the same parameters that you would if you were using the [PatternLayout][3].
 
 ```
-          <layout type="Gelf4net.Layout.GelfLayout, Gelf4net">
+          <layout type="Gelf4Net.Layout.GelfLayout, Gelf4Net">
             <param name="ConversionPattern" value="[%t] %c{1} - %m" />
           </layout>
 ```
