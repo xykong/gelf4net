@@ -27,6 +27,7 @@ namespace Gelf4Net.Layout
             IgnoresException = false;
             _patternLayout = new PatternLayout();
             SendTimeStampAsString = true;
+            UseServerTimeStamp = false;
         }
 
         /// <summary>
@@ -82,6 +83,8 @@ namespace Gelf4Net.Layout
         public bool IncludeLocationInformation { get; set; }
 
         public bool SendTimeStampAsString { get; set; }
+
+        public bool UseServerTimeStamp { get; set; }
 
         public override void ActivateOptions()
         {
@@ -194,9 +197,13 @@ namespace Gelf4Net.Layout
                 Host = HostName ?? Environment.MachineName,
                 Level = GetSyslogSeverity(loggingEvent.Level),
                 Line = string.Empty,
-                TimeStamp = loggingEvent.TimeStamp,
                 Version = GELF_VERSION,
             };
+
+            if (!this.UseServerTimeStamp)
+            {
+                message.TimeStamp = loggingEvent.TimeStamp;
+            }
 
             message.Add("LoggerName", loggingEvent.LoggerName);
 
